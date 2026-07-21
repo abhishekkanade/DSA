@@ -1,35 +1,38 @@
 class Solution {
     public String removeDuplicateLetters(String s) {
-        
-        int[] freq = new int[26];
-        boolean[] isPresent = new boolean[26];
-        Stack<Character> st = new Stack<>();
 
-        for(int i=0; i< s.length(); i++){
-            freq[s.charAt(i)-'a']++;
+        int[] freq = new int[26];
+        boolean[] inStack = new boolean[26];
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;
         }
 
-        int curr = 0;
-        while(curr < s.length()){
-            char c = s.charAt(curr);
-            freq[c-'a']--;
+        for (char c : s.toCharArray()) {
 
-            while(!st.empty() && st.peek()>c && freq[st.peek() -'a']>0 && ! isPresent[c-'a'] ){
-               
-                isPresent[ st.pop()-'a']=false;
-            }
-            if(isPresent[c-'a']){
-                curr++;
+            freq[c - 'a']--;
+
+            if (inStack[c - 'a']) {
                 continue;
             }
-            st.push(c);
-            isPresent[c-'a']=true;
-            curr++;
+
+            while (!stack.isEmpty()
+                    && stack.peek() > c
+                    && freq[stack.peek() - 'a'] > 0) {
+
+                inStack[stack.pop() - 'a'] = false;
+            }
+
+            stack.push(c);
+            inStack[c - 'a'] = true;
         }
 
         StringBuilder ans = new StringBuilder();
-        while(!st.empty())
-            ans.append(st.pop());
+
+        while (!stack.isEmpty()) {
+            ans.append(stack.pop());
+        }
 
         return ans.reverse().toString();
     }
