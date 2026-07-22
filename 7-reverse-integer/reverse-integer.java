@@ -9,7 +9,6 @@ class Solution {
         while(num != 0 ){
             
              if (right > Integer.MAX_VALUE / 10 || (right == Integer.MAX_VALUE / 10 && (num%10) > 7))
-             if (right > Integer.MAX_VALUE / 10 || (right == Integer.MAX_VALUE / 10 && (num%10) > 7))
                 return 0;
 
             right = (right*10) + (num%10);
