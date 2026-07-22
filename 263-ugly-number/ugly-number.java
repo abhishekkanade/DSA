@@ -19,8 +19,7 @@ class Solution {
             num /= 5;
 
         }
-        if(num==1) return true;
-
-        return false;
+        
+        return num==1;
     }
 }
