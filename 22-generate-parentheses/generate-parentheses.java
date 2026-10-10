@@ -9,9 +9,9 @@ class Solution {
     }
 
     void function(int n, StringBuilder str, int open, int close){
-        // if( close > open ){
-        //     return;
-        // }
+        if( close > open ){
+            return;
+        }
         if(str.length() == 2*n ){
             ans.add(str.toString());
             return;
@@ -23,11 +23,11 @@ class Solution {
             str.deleteCharAt(str.length()-1);
         }
         
-        if(close < open){
+        // if(close < open){
             str.append(')');
             function(n, str, open, close+1);
             str.deleteCharAt(str.length()-1);
-        }
+        // }
         
     }
 }
