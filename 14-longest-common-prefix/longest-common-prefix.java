@@ -6,6 +6,7 @@ class Solution {
             int j=0;
             while( j<str.length() && j<ans.length() && str.charAt(j)==(ans.charAt(j)) ) j++;
             ans= new StringBuilder(ans.substring(0, j));
+            if(ans.isEmpty()) return "";
     }
         return ans.toString();
     }
