@@ -7,7 +7,7 @@ class Solution {
         int n = nums.length;
         int idx = 0;
 
-        for(int i = 2*n-1; i>=0; i--){
+        for(int i = 2*n-2; i>=0; i--){
             idx = i%n;
 
             while(!st.isEmpty() && st.peek()<=nums[idx]) st.pop();
@@ -22,7 +22,7 @@ class Solution {
 
         return ans;
 
-// BY APPROACH - GOOD BUT NOT SIMPLE AND BEST
+// MY APPROACH - GOOD BUT NOT SIMPLE AND BEST
     //    ArrayList<Integer> list = new ArrayList<>();
     //    int[] ans = new int[nums.length];
     //    for( int i=0; i<nums.length; i++){
